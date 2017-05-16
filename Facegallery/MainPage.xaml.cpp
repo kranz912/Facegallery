@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 #include <iostream>
-
+#include <filesystem>
 using namespace Facegallery;
 using namespace concurrency;
 using namespace Platform;
@@ -47,7 +47,19 @@ void Facegallery::MainPage::ImportBtn_Click(Platform::Object^ sender, Windows::U
 	create_task(folderPicker->PickSingleFolderAsync()).then([this](StorageFolder ^ folder) {
 		if (folder) {
 			String ^ path = folder->Path->ToString();
-			tbtest->Text = path;
+			
+			create_task(folder->GetFilesAsync()).then([this](IVectorView<StorageFile ^> ^ files) {
+				if (files->Size > 0) {
+					String ^output = "";
+					
+					std::for_each(begin(files), end(files), [this, &output](StorageFile ^ file) {
+						if (file->FileType == ".jpg") {
+							ListItems->Items->Append(file->Name->ToString());
+						}
+						
+					});
+				}
+			});
 		}
 	});
 	

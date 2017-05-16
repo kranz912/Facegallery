@@ -14,6 +14,7 @@ namespace Windows {
                 ref class FlipView;
                 ref class Button;
                 ref class TextBox;
+                ref class ListView;
             }
         }
     }
@@ -38,6 +39,7 @@ namespace Facegallery
         private: ::Windows::UI::Xaml::Controls::Button^ ImportBtn;
         private: ::Windows::UI::Xaml::Controls::Button^ ExportBtn;
         private: ::Windows::UI::Xaml::Controls::TextBox^ tbtest;
+        private: ::Windows::UI::Xaml::Controls::ListView^ ListItems;
     };
 }
 

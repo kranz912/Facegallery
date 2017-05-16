@@ -56,6 +56,11 @@ void ::Facegallery::MainPage::Connect(int __connectionId, ::Platform::Object^ __
                 this->tbtest = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
+        case 6:
+            {
+                this->ListItems = safe_cast<::Windows::UI::Xaml::Controls::ListView^>(__target);
+            }
+            break;
     }
     _contentLoaded = true;
 }
